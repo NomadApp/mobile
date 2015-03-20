@@ -1,5 +1,13 @@
 angular.module('starter.services', ['ngResource'])
 
+.factory('Config', function(){
+  return{
+    apiBase: function(){
+      return 'http://damp-spire-4043.herokuapp.com';
+    }
+  };
+})
+
 .factory('Session', function($window) {
   return {
     set: function(key, value) {
@@ -22,8 +30,8 @@ angular.module('starter.services', ['ngResource'])
   }
 })
 
-.factory('Auth', function ($resource) {
-  var Auth = $resource('http://localhost:3000/auth/:path', {}, {
+.factory('Auth', function ($resource, Config) {
+  var Auth = $resource(Config.apiBase()+'/auth/:path', {}, {
     login: {
       method: 'POST',
       params: {
@@ -35,8 +43,8 @@ angular.module('starter.services', ['ngResource'])
   return Auth;
 })
 
-.factory('Interest', function ($resource) {
-  var Interest = $resource('http://localhost:3000/interest', {}, {
+.factory('Interest', function ($resource, Config) {
+  var Interest = $resource(Config.apiBase()+'/interest', {}, {
     query: {
       method: 'GET',
       isArray: true
@@ -46,8 +54,8 @@ angular.module('starter.services', ['ngResource'])
   return Interest;
 })
 
-.factory('Like', function ($resource) {
-  var Like = $resource('http://localhost:3000/like', {}, {
+.factory('Like', function ($resource, Config) {
+  var Like = $resource(Config.apiBase()+'/like', {}, {
     query: {
       method: 'GET',
       isArray: true
@@ -57,8 +65,8 @@ angular.module('starter.services', ['ngResource'])
   return Like;
 })
 
-.factory('User', function ($resource) {
-  var User = $resource('http://localhost:3000/user/:id/:path', {
+.factory('User', function ($resource, Config) {
+  var User = $resource(Config.apiBase()+'/user/:id/:path', {
     id: '@id'
   }, {
     saveInterests: {
