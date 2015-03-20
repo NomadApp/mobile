@@ -1,0 +1,23 @@
+<ion-view view-title="Nomad">
+  <div class="bar bar-subheader">
+    <h2 class="title">What would you like to see in your feed?</h2>
+  </div>
+  <ion-content>
+    <form ng-submit="save()">
+      <ul class="list">
+        <li class="item item-checkbox" ng-repeat="like in likes">
+          <label class="checkbox">
+            <input type="checkbox" ng-model="like.checked">
+          </label>
+          {{like.label}}
+        </li>
+      </ul>
+      <label class="item block-button-container" ng-show="!loadingLikes" ng-switch on="savingLikes">
+        <button ng-switch-default class="button button-block button-positive" type="submit">Get started</button>
+        <button ng-switch-when="true" type="button" class="button button-block button-positive">
+          <i class="icon ion-loading-c"></i> Saving...
+        </button>
+      </label>
+    </form>
+  </ion-content>
+</ion-view>

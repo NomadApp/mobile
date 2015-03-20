@@ -1,0 +1,18 @@
+/* Empty. Add your own CSS if you like */
+.ion-social-facebook.login {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.login-button-container {
+  margin-top: 50%;
+}
+
+.block-button-container {
+  border: none;
+}
+
+.bar-header {
+  bottom-color: #ccc;
+  border-bottom-style: solid;
+}
