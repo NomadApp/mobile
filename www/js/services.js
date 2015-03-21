@@ -1,9 +1,10 @@
-angular.module('starter.services', ['ngResource'])
+angular.module('nomad.services', ['ngResource'])
 
 .factory('Config', function(){
   return{
     apiBase: function(){
-      return 'http://damp-spire-4043.herokuapp.com';
+      return 'http://damp-spire-4043.herokuapp.com'
+      return 'http://localhost:3000';
     }
   };
 })

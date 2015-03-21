@@ -12,7 +12,15 @@
   border: none;
 }
 
-.bar-header {
-  bottom-color: #ccc;
-  border-bottom-style: solid;
+.content-dark,
+.content-dark .item,
+.content-dark .item-content {
+  background: #444;
+  color: #fff;
 }
+
+.content-dark .item-content h2,
+.content-dark .item-content h5 {
+  color: #fff;
+}
+

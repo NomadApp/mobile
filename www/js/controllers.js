@@ -1,10 +1,12 @@
-angular.module('starter.controllers', ['starter.services'])
+angular.module('nomad.controllers', ['nomad.services'])
 
 .controller('AppCtrl', function($scope, $timeout, $location, $state, Session, Auth) {
   $scope.logout = function(){
     Session.remove('user');
     $location.path('/login');
   };
+
+  $scope.user = Session.getObject('user');
 
   $scope.fbLogin = function() {
     openFB.login(function(response) {
@@ -14,8 +16,9 @@ angular.module('starter.controllers', ['starter.services'])
         Auth.login({facebookToken: response.authResponse.token}, function(data){
           $scope.loggingIn = false;
           Session.setObject('user', data);
+          $scope.user = Session.getObject('user');
           if(data.firstLogin){
-            $state.go('app.interests');
+            $state.go('interests');
           }else{
             $state.go('app.profile');
           }
@@ -61,13 +64,13 @@ angular.module('starter.controllers', ['starter.services'])
       interestIds: checkedInterestIds
     }, function(data){
       $scope.savingInterests = false;
-      $state.go('app.likes');
+      $state.go('likes');
     }, function(error){
       $scope.savingInterests = false;
       alert(error.statusText+'. '+error.data.message);
       // This error does not justify holding the user in the page.
       // Advance the user to the next page anyways
-      $state.go('app.likes');
+      $state.go('likes');
     });
   };
 
@@ -104,7 +107,7 @@ angular.module('starter.controllers', ['starter.services'])
       alert(error.statusText+'. '+error.data.message);
       // This error does not justify holding the user in the page.
       // Advance the user to the next page anyways
-      //$state.go('app.profile');
+      $state.go('app.profile');
     });
   };
 
