@@ -1,11 +1,20 @@
 <ion-view title="Profile">
     <ion-content class="has-header">
         <div class="list card">
-            <div class="item">
-                <h2>{{user.firstName + user.lastName}}</h2>
+            <div class="item item-thumbnail-left">
+                <img ng-src="http://graph.facebook.com/{{user.facebookUserId}}/picture?width=80&height=80">
+                <h2>{{profileUser.firstName +' '+profileUser.lastName}}</h2>
+                <p ng-show="profileUser.interests && profileUser.interests.length">
+                    <span ng-repeat="interest in profileUser.interests">#{{interest.label}}</span>
+                </p>
+                <p>{{profileUser.level}}</p>
             </div>
             <div class="item item-body">
-                <img ng-src="http://graph.facebook.com/{{user.facebookUserId}}/picture?width=270&height=270"/>
+                <a href="javascript:void(0)" ng-if="profileUser.id === user.id && !profileUser.bio"
+                    ng-click="openEditBioModal()">Add Bio</a>
+                <a href="javascript:void(0)" ng-if="profileUser.id === user.id && profileUser.bio"
+                    ng-click="openEditBioModal()" class="ion-edit"></a>
+                {{profileUser.bio}}
             </div>
         </div>
     </ion-content>

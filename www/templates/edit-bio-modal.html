@@ -1,0 +1,20 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">{{getBioModalTitlePrefix()}}Bio</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="bioModal.hide()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form name="bioForm" ng-submit="saveBio()">
+      <div class="list list-inset">
+        <label class="item item-input">
+          <input ng-model="newBio.text" type="text" placeholder="Enter bio" ng-required="true">
+        </label>
+      </div>
+      <div class="padding">
+        <button class="button button-block button-positive" ng-disabled="bioForm.$invalid">Save</button>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

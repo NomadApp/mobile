@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('nomad', ['ionic', 'nomad.controllers', 'nomad.services'])
+angular.module('nomad', ['ionic', 'nomad.controllers', 'nomad.services', 'nomad.interceptors'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -32,33 +32,51 @@ angular.module('nomad', ['ionic', 'nomad.controllers', 'nomad.services'])
       controller: 'AppCtrl'
     })
 
+    .state('app.login', {
+      url: "/login",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/login.html",
+          controller: 'AppCtrl'
+        }
+      }
+    })
+
+    .state('app.interests', {
+      url: "/interests",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/interests.html",
+          controller: "InterestsCtrl"
+        }
+      }
+    })
+
+    .state('app.likes', {
+      url: "/likes",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/likes.html",
+          controller: "LikesCtrl"
+        }
+      }
+    })
+
     .state('app.profile', {
-      url: "/profile",
+      url: "/user/:id",
       views: {
         'menuContent' :{
           templateUrl: "templates/profile.html",
           controller: "ProfileCtrl"
         }
       }
-    })
-
-    .state('login', {
-      url: "/login",
-      templateUrl: "templates/login.html",
-      controller: 'AppCtrl'
-    })
-
-    .state('interests', {
-      url: "/interests",
-      templateUrl: "templates/interests.html",
-      controller: "InterestsCtrl"
-    })
-
-    .state('likes', {
-      url: "/likes",
-      templateUrl: "templates/likes.html",
-      controller: "LikesCtrl"
     });
+
+  var defaultState = '/app/login';
+  if(window.localStorage.user){
+    var user = JSON.parse(window.localStorage.user);
+    defaultState = '/app/user/'+user.id;
+  }
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise(defaultState);
 });
