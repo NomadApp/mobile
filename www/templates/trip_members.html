@@ -1,0 +1,35 @@
+<ion-view title="Plan a Trip">
+  <ion-content class="has-header padding">
+    <h4>Choose trip members</h4>
+    <label class="item item-input">
+      <input type="text" ng-model="search.term" ng-change="suggestFriends()">
+    </label>
+    <h4 class="padding" ng-show="suggestions && suggestions.length">Suggestions</h4>
+    <div class="list" ng-class="{dropdown: search.term}">
+      <label class="item item-radio" ng-repeat="suggestion in suggestions" ng-click="selectSuggestion('name')">
+        <input type="checbox" name="group" ng-model="suggestion.checked">
+        <div class="item-content">
+          {{suggestion.firstName + suggestion.lastName}}
+        </div>
+        <i class="radio-icon ion-checkmark"></i>
+      </label>
+      <label class="item" ng-show="search.term && suggestions && !suggestions.length">
+        No match found
+        <button ng-click="openEmailInviteModal()">Invite by email</button>
+      </label>
+    </div>
+    <div class="list">
+      <div ng-repeat="member in members" class="item item-avatar">
+        <img ng-src="{{member.image || '/images/default-avatar.png'}}"></img>
+        <h2 ng-if="!member.emailOnly">{{member.firstName +' '+member.lastName}}</h2>
+        <h2 ng-if="member.emailOnly">{{member.email}}</h2>
+      </div>
+    </div>
+    <a href="#/app/tripLog/{{tripId}}" class="button button-block button-positive">
+      Get planning
+    </a>
+    <div align="center">
+      <a href="#/app/tripLog/{{tripId}}">Skip to trip log</a>
+    </div>
+  </ion-content>
+</ion-view>

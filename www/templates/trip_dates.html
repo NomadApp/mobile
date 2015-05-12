@@ -1,0 +1,19 @@
+<ion-view title="Plan a Trip">
+  <ion-content class="has-header padding">
+    <form name="tripDateForm" ng-submit="saveTripDates()">
+      <h4>Choose start date</h4>
+      <label class="item item-input">
+        <input type="date" ng-model="trip.startDate" ng-required="true">
+      </label>
+      <h4>Choose end date</h4>
+      <label class="item item-input">
+        <input type="date" ng-model="trip.endDate" ng-required="true">
+      </label>
+      <input type="submit" value="Next" class="button button-block button-positive"
+        ng-disabled="tripDateForm.$invalid">
+      <div align="center">
+        <a href="#/app/tripMembers/{{trip.id}}">Skip to choose trip members</a>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,30 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">{{getLocationModalTitle()}}</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeLocationModal()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form name="locationForm" ng-submit="selectLocation()">
+      <div class="list list-inset">
+        <label class="item item-input">
+          <input ng-model="location.value" type="text" ng-required="true" ng-change="suggestLocations()">
+        </label>
+      </div>
+      <h4 class="padding" ng-show="suggestions && suggestions.length">Suggestions</h4>
+      <div class="list">
+        <label class="item item-radio" ng-repeat="suggestion in suggestions" ng-click="selectSuggestion()">
+          <input type="radio" name="group" ng-model="suggestion.checked">
+          <div class="item-content">
+            {{suggestion.description}}
+          </div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
+        <label class="item" ng-show="location.value && suggestions && !suggestions.length">
+          No match found
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

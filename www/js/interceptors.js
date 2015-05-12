@@ -14,7 +14,7 @@ angular.module('nomad.interceptors', [])
             delete window.localStorage['user'];
             window.location.href = window.location.origin+'/#/app/login';
           }
-          return false;
+          return $q.reject(rejection);
         }else{
           return $q.reject(rejection);
         }

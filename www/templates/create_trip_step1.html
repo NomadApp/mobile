@@ -1,0 +1,26 @@
+<ion-view title="Plan a Trip">
+  <ion-content class="has-header padding">
+    <form name="tripForm" ng-submit="createTrip()">
+      <h4>Pick a name for your trip</h4>
+      <label class="item item-input">
+        <input type="text" ng-model="trip.name">
+      </label>
+      <h4 class="padding-top">Select "Public" if anyone can join</h4>
+      <label class="item item-radio">
+        <input type="radio" name="group" ng-model="trip.public">
+        <div class="item-content">
+          Private
+        </div>
+        <i class="radio-icon ion-checkmark"></i>
+      </label>
+      <label class="item item-radio">
+        <input type="radio" name="group" ng-model="trip.public">
+        <div class="item-content">
+          Public
+        </div>
+        <i class="radio-icon ion-checkmark"></i>
+      </label>
+      <input type="submit" class="button button-block button-positive" value="Create Trip">
+    </form>
+  </ion-content>
+</ion-view>

@@ -24,3 +24,12 @@
   color: #fff;
 }
 
+.bottom-fixed-button {
+  bottom: -225px;
+}
+
+.list.dropdown {
+  position: absolute;
+  width: 100%;
+  box-shadow: 3px 3px 3px #ccc;
+}

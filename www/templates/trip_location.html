@@ -1,0 +1,20 @@
+<ion-view title="Plan a Trip">
+  <ion-content class="has-header padding">
+    <form name="tripLocationForm" ng-submit="saveTripLocation()">
+      <h4>Enter start location</h4>
+      <label class="item item-input">
+        <input type="text" ng-model="trip.startLocation.description" ng-click="openLocationModal('start')"
+          ng-required="true">
+      </label>
+      <h4>Enter destination</h4>
+      <label class="item item-input">
+        <input type="text" ng-model="trip.endLocation.description" ng-click="openLocationModal('end')"
+          ng-required="true">
+      </label>
+      <input type="submit" class="button button-block button-positive" value="Next" ng-disabled="tripLocationForm.$invalid">
+      <div align="center">
+        <a href="#/app/tripDates/{{trip.id}}">Skip to choose trip dates</a>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

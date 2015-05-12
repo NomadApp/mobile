@@ -1,0 +1,21 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Invite by email</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="emailInviteModal.hide()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <h5 class="padding">You will be able to add this friend to the trip once they join</h5>
+    <form name="inviteForm" ng-submit="sendInvite()">
+      <div class="list list-inset">
+        <label class="item item-input">
+          <input ng-model="email.value" type="email" placeholder="Enter email" ng-required="true">
+        </label>
+      </div>
+      <div class="padding">
+        <button class="button button-block button-positive" ng-disabled="inviteForm.$invalid">Invite</button>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

@@ -26,48 +26,158 @@ angular.module('nomad', ['ionic', 'nomad.controllers', 'nomad.services', 'nomad.
   $stateProvider
 
     .state('app', {
-      url: "/app",
+      url: '/app',
       abstract: true,
-      templateUrl: "templates/menu.html",
+      templateUrl: 'templates/menu.html',
       controller: 'AppCtrl'
     })
 
     .state('app.login', {
-      url: "/login",
+      url: '/login',
       views: {
         'menuContent': {
-          templateUrl: "templates/login.html",
+          templateUrl: 'templates/login.html',
+          resolve: {
+            Data: function($rootScope){
+              $rootScope.hideTabs = true;
+            }
+          },
           controller: 'AppCtrl'
         }
       }
     })
 
     .state('app.interests', {
-      url: "/interests",
+      url: '/interests',
       views: {
         'menuContent': {
-          templateUrl: "templates/interests.html",
-          controller: "InterestsCtrl"
+          templateUrl: 'templates/interests.html',
+          resolve: {
+            Data: function($rootScope){
+              $rootScope.hideTabs = true;
+            }
+          },
+          controller: 'InterestsCtrl'
         }
       }
     })
 
     .state('app.likes', {
-      url: "/likes",
+      url: '/likes',
       views: {
         'menuContent': {
-          templateUrl: "templates/likes.html",
-          controller: "LikesCtrl"
+          templateUrl: 'templates/likes.html',
+          resolve: {
+            Data: function($rootScope){
+              $rootScope.hideTabs = true;
+            }
+          },
+          controller: 'LikesCtrl'
         }
       }
     })
 
     .state('app.profile', {
-      url: "/user/:id",
+      url: '/user/:id',
       views: {
-        'menuContent' :{
-          templateUrl: "templates/profile.html",
-          controller: "ProfileCtrl"
+        'profileContent' :{
+          templateUrl: 'templates/profile.html',
+          resolve: {
+            Data: function($rootScope){
+              $rootScope.hideTabs = false;
+            }
+          },
+          controller: 'ProfileCtrl'
+        }
+      }
+    })
+
+    .state('app.myTrips', {
+      url: '/myTrips',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/myTrips.html',
+          resolve: {
+            Data: function($rootScope){
+              $rootScope.hideTabs = false;
+            }
+          },
+          controller: 'MyTripsCtrl'
+        }
+      }
+    })
+
+    .state('app.createTripStep1', {
+      url: '/createTripStep1',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/create_trip_step1.html',
+          resolve: {
+            Data: function($rootScope){
+              $rootScope.hideTabs = true;
+            }
+          },
+          controller: 'CreateTripCtrl'
+        }
+      }
+    })
+
+    .state('app.tripLocation', {
+      url: '/tripLocation/:tripId',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/trip_location.html',
+          resolve: {
+            Data: function($rootScope){
+              $rootScope.hideTabs = true;
+            }
+          },
+          controller: 'CreateTripCtrl'
+        }
+      }
+    })
+
+    .state('app.tripDates', {
+      url: '/tripDates/:tripId',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/trip_dates.html',
+          resolve: {
+            Data: function($rootScope){
+              $rootScope.hideTabs = true;
+            }
+          },
+          controller: 'CreateTripCtrl'
+        }
+      }
+    })
+
+    .state('app.tripMembers', {
+      url: '/tripMembers/:tripId',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/trip_members.html',
+          resolve: {
+            Data: function($rootScope){
+              $rootScope.hideTabs = true;
+            }
+          },
+          controller: 'CreateTripCtrl'
+        }
+      }
+    })
+
+    .state('app.feed', {
+      url: '/feed',
+      views: {
+        'feedContent': {
+          templateUrl: 'templates/feed.html',
+          resolve: {
+            Data: function($rootScope){
+              $rootScope.hideTabs = false;
+            }
+          },
+          controller: 'FeedCtrl'
         }
       }
     });
